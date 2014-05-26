@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+
+def insertion_statements(path)
+  File.read(path).split(/;$/).select! {|s| s.include? 'INSERT'}
+end
+
+before = insertion_statements ARGV[0]
+after = insertion_statements ARGV[1]
+
+before.pop
+after.pop
+
+#puts "Sowing seeds from #{before[0..10]} to #{after[0..10]}..."
+#puts (after - before)[0]
+#puts after[0].length
+#puts before[0].length
+puts (before-after)[0]
